@@ -1,12 +1,27 @@
-﻿namespace MojeCV.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace MojeCV.Models
 {
     public class Doswiadczenie
     {
         public int Id { get; set; }
+
+        [Required(ErrorMessage = "Pole Stanowisko jest wymagane.")]
+        [StringLength(100, ErrorMessage = "Stanowisko nie może być dłuższe niż 100 znaków.")]
         public string Stanowisko { get; set; } = string.Empty;
+
+        [Required(ErrorMessage = "Firma to pole obowiązkowe.")]
         public string Firma { get; set; } = string.Empty;
+
+        [Required]
+        [DataType(DataType.Date)]
+        [Display(Name = "Data rozpoczęcia")]
         public DateTime DataOd { get; set; }
-        public DateTime? DataDo { get; set; }   // null = nadal pracuję
+
+        [DataType(DataType.Date)]
+        [Display(Name = "Data zakończenia")]
+        public DateTime? DataDo { get; set; }
+
         public string? Opis { get; set; }
 
         // Nowa właściwość obliczana

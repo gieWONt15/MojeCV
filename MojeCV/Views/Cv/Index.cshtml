@@ -14,7 +14,7 @@
     <h2>Doświadczenie zawodowe</h2>
     <hr />
     
-    @if (Model.Doswiadczenia != null && Model.Doswiadczenia.Any())
+    @if (Model.Doswiadczenia.Any())
     {
         <ul class="list-unstyled">
             @foreach (var d in Model.Doswiadczenia)
@@ -46,7 +46,7 @@
     <hr />
     
     @* Sprawdzamy, czy obiekt istnieje i czy nazwa szkoły nie jest pusta *@
-    @if (Model.Wyksztalcenie != null && !string.IsNullOrEmpty(Model.Wyksztalcenie.NazwaSzkoly))
+    @if (!string.IsNullOrEmpty(Model.Wyksztalcenie.NazwaSzkoly))
     {
         <div class="mb-3">
             <h5 class="mb-1">@Model.Wyksztalcenie.NazwaSzkoly, @Model.Wyksztalcenie.Miasto</h5>
@@ -70,7 +70,7 @@
     <h2>Umiejętności</h2>
     <hr />
     
-    @if (Model.Umiejetnosci != null && Model.Umiejetnosci.Any())
+    @if (Model.Umiejetnosci.Any())
     {
         // Grupowanie umiejętności po polu Kategoria
         var pogrupowaneUmiejetnosci = Model.Umiejetnosci.GroupBy(u => u.Kategoria);

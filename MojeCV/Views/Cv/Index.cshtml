@@ -11,24 +11,107 @@
 </header>
 
 <section class="mb-4">
-    <h2>Doświadczenie</h2>
-    @foreach (var d in Model.Doswiadczenia.OrderByDescending(d => d.DataOd))
+    <h2>Doświadczenie zawodowe</h2>
+    <hr />
+    
+    @if (Model.Doswiadczenia != null && Model.Doswiadczenia.Any())
     {
-        <div class="mb-3">
-            <h5>@d.Stanowisko — @d.Firma</h5>
-            <small class="text-muted">
-                @d.DataOd.ToString("MM.yyyy") – @(d.DataDo?.ToString("MM.yyyy") ?? "obecnie")
-            </small>
-            <p>@d.Opis</p>
-        </div>
+        <ul class="list-unstyled">
+            @foreach (var d in Model.Doswiadczenia)
+            {
+                <li class="mb-4">
+                    <h5 class="mb-1">@d.Stanowisko, @d.Firma</h5>
+                    
+                    <p class="text-muted mb-2">
+                        @d.DataOd.ToString("MM.yyyy") - 
+                        @(d.DataDo.HasValue ? d.DataDo.Value.ToString("MM.yyyy") : "Obecnie") 
+                        <strong>(@d.CzasTrwania)</strong>
+                    </p>
+                    
+                    @if (!string.IsNullOrEmpty(d.Opis))
+                    {
+                        <p class="mb-0">@d.Opis</p>
+                    }
+                </li>
+            }
+        </ul>
+    }
+    else
+    {
+        <p>Brak dodanego doświadczenia.</p>
     }
 </section>
-<section>
+<section class="mb-4">
+    <h2>Wykształcenie</h2>
+    <hr />
+    
+    @* Sprawdzamy, czy obiekt istnieje i czy nazwa szkoły nie jest pusta *@
+    @if (Model.Wyksztalcenie != null && !string.IsNullOrEmpty(Model.Wyksztalcenie.NazwaSzkoly))
+    {
+        <div class="mb-3">
+            <h5 class="mb-1">@Model.Wyksztalcenie.NazwaSzkoly, @Model.Wyksztalcenie.Miasto</h5>
+            
+            <!-- Formatowanie daty do postaci np. 10.2023 -->
+            <p class="text-muted mb-1">
+                @Model.Wyksztalcenie.DataStart.ToString("MM.yyyy") - @Model.Wyksztalcenie.DataKoniec.ToString("MM.yyyy")
+            </p>
+            
+            <p>
+                <strong>Tytuł:</strong> @Model.Wyksztalcenie.TytulUzyskany
+            </p>
+        </div>
+    }
+    else
+    {
+        <p>Brak dodanego wykształcenia.</p>
+    }
+</section>
+<section class="mb-4">
     <h2>Umiejętności</h2>
-    <ul>
-        @foreach (var u in Model.Umiejetnosci)
-        {
-            <li>@u.Nazwa — @u.Poziom/5</li>
-        }
-    </ul>
+    <hr />
+    
+    @if (Model.Umiejetnosci != null && Model.Umiejetnosci.Any())
+    {
+        // Grupowanie umiejętności po polu Kategoria
+        var pogrupowaneUmiejetnosci = Model.Umiejetnosci.GroupBy(u => u.Kategoria);
+
+        <div class="row">
+            @foreach (var grupa in pogrupowaneUmiejetnosci)
+            {
+                <div class="col-md-6 mb-4">
+                    <!-- Wyświetlenie nazwy kategorii (klucz grupy) -->
+                    <h4 class="h5 text-secondary border-bottom pb-2 mb-3">@grupa.Key</h4>
+                    
+                    <ul class="list-unstyled">
+                        <!-- Pętla iterująca po umiejętnościach wewnątrz danej kategorii -->
+                        @foreach (var u in grupa)
+                        {
+                            var szerokoscPaska = u.Poziom * 20;
+
+                            <li class="mb-3">
+                                <div class="d-flex justify-content-between mb-1">
+                                    <strong>@u.Nazwa</strong>
+                                    <span class="text-muted small">@u.Poziom/5</span>
+                                </div>
+                                
+                                <div class="progress" style="height: 12px;">
+                                    <div class="progress-bar bg-primary" 
+                                         role="progressbar" 
+                                         style="width: @(szerokoscPaska)%;" 
+                                         aria-valuenow="@szerokoscPaska" 
+                                         aria-valuemin="0" 
+                                         aria-valuemax="100">
+                                    </div>
+                                </div>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <p>Brak dodanych umiejętności.</p>
+    }
 </section>

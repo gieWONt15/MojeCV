@@ -27,11 +27,19 @@ public class CvController : Controller
             },
             Umiejetnosci = new()
             {
-                new Umiejetnosc { Nazwa = "C#", Poziom = 3 },
-                new Umiejetnosc { Nazwa = "HTML/CSS", Poziom = 5 },
-                new Umiejetnosc { Nazwa = "Git", Poziom = 4 },
-                new Umiejetnosc { Nazwa = "JavaScript", Poziom = 4 },
-                new Umiejetnosc { Nazwa = "SQL", Poziom = 3 },
+                new Umiejetnosc { Nazwa = "C#", Poziom = 3, Kategoria = "Backend" },
+                new Umiejetnosc { Nazwa = "SQL", Poziom = 3, Kategoria = "Backend" },
+                new Umiejetnosc { Nazwa = "HTML/CSS", Poziom = 5, Kategoria = "Frontend" },
+                new Umiejetnosc { Nazwa = "JavaScript", Poziom = 4, Kategoria = "Frontend" },
+                new Umiejetnosc { Nazwa = "Git", Poziom = 4, Kategoria = "Narzędzia" }
+            },
+            Wyksztalcenie = new()
+            {
+                NazwaSzkoly = "Uniwersytet WSB Merito w Poznaniu filia w Chorzowie",
+                DataStart =  new DateTime(2025, 10, 1),
+                DataKoniec =  new DateTime(2027, 2, 28),
+                Miasto = "Chorzów",
+                TytulUzyskany = "Inżynier informatyki"
             }
         };
         return View(model);

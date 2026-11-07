@@ -31,9 +31,11 @@ namespace MojeCV.Migrations
 
                     b.Property<string>("Firma")
                         .IsRequired()
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Opis")
+                        .HasMaxLength(1000)
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Stanowisko")
@@ -44,6 +46,97 @@ namespace MojeCV.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Doswiadczenie");
+                });
+
+            modelBuilder.Entity("MojeCV.Models.Osoba", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasMaxLength(40)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Imie")
+                        .IsRequired()
+                        .HasMaxLength(40)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Miasto")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Nazwisko")
+                        .IsRequired()
+                        .HasMaxLength(40)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("OMnie")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Stanowisko")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Telefon")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Osoba");
+                });
+
+            modelBuilder.Entity("MojeCV.Models.Umiejetnosc", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Kategoria")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Nazwa")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("Poziom")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Umiejetnosc");
+                });
+
+            modelBuilder.Entity("MojeCV.Models.Wyksztalcenie", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Kierunek")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("RokDo")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("RokOd")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Stopien")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Uczelnia")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Wyksztalcenie");
                 });
 #pragma warning restore 612, 618
         }

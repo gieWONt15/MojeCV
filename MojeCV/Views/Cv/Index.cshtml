@@ -45,21 +45,28 @@
     <h2>Wykształcenie</h2>
     <hr />
     
-    @* Sprawdzamy, czy obiekt istnieje i czy nazwa szkoły nie jest pusta *@
-    @if (!string.IsNullOrEmpty(Model.Wyksztalcenie.NazwaSzkoly))
+    @if (Model.Wyksztalcenie != null && Model.Wyksztalcenie.Any())
     {
-        <div class="mb-3">
-            <h5 class="mb-1">@Model.Wyksztalcenie.NazwaSzkoly, @Model.Wyksztalcenie.Miasto</h5>
-            
-            <!-- Formatowanie daty do postaci np. 10.2023 -->
-            <p class="text-muted mb-1">
-                @Model.Wyksztalcenie.DataStart.ToString("MM.yyyy") - @Model.Wyksztalcenie.DataKoniec.ToString("MM.yyyy")
-            </p>
-            
-            <p>
-                <strong>Tytuł:</strong> @Model.Wyksztalcenie.TytulUzyskany
-            </p>
-        </div>
+        <ul class="list-unstyled">
+            @foreach (var w in Model.Wyksztalcenie)
+            {
+                <li class="mb-3">
+                    <h5 class="mb-1">@w.Uczelnia</h5>
+                    
+                    <p class="text-muted mb-1">
+                        @w.RokOd - @(w.RokDo != 0 ? w.RokDo.ToString() : "Obecnie")
+                    </p>
+                    
+                    <p class="mb-0">
+                        <strong>Kierunek:</strong> @w.Kierunek 
+                        @if (!string.IsNullOrEmpty(w.Stopien))
+                        {
+                            <span>(@w.Stopien)</span>
+                        }
+                    </p>
+                </li>
+            }
+        </ul>
     }
     else
     {

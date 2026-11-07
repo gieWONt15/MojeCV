@@ -1,0 +1,48 @@
+@model MojeCV.Models.Wyksztalcenie
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Wyksztalcenie</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Uczelnia)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Uczelnia)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Kierunek)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Kierunek)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Stopien)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Stopien)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.RokOd)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.RokOd)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.RokDo)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.RokDo)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

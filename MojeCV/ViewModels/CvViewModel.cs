@@ -7,5 +7,5 @@ public class CvViewModel
     public Osoba Osoba { get; set; } = new();
     public List<Doswiadczenie> Doswiadczenia { get; set; } = new();
     public List<Umiejetnosc> Umiejetnosci { get; set; } = new();
-    public Wyksztalcenie Wyksztalcenie { get; set; } = new();
+    public List<Wyksztalcenie> Wyksztalcenie { get; set; } = new();
 }

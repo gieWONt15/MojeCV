@@ -1,9 +1,13 @@
-﻿namespace MojeCV.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace MojeCV.Models
 {
     public class Umiejetnosc
     {
         public int Id { get; set; }
         public string Nazwa { get; set; } = string.Empty;
+        
+        [Range(1, 5)]
         public int Poziom { get; set; }   // 1–5
         
         // Nowe pole do grupowania

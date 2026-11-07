@@ -7,10 +7,10 @@ namespace MojeCV.Models
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Pole Stanowisko jest wymagane.")]
-        [StringLength(100, ErrorMessage = "Stanowisko nie może być dłuższe niż 100 znaków.")]
+        [StringLength(100)]
         public string Stanowisko { get; set; } = string.Empty;
 
-        [Required(ErrorMessage = "Firma to pole obowiązkowe.")]
+        [Required, StringLength(100)]
         public string Firma { get; set; } = string.Empty;
 
         [Required]
@@ -22,6 +22,7 @@ namespace MojeCV.Models
         [Display(Name = "Data zakończenia")]
         public DateTime? DataDo { get; set; }
 
+        [StringLength(1000)]
         public string? Opis { get; set; }
 
         // Nowa właściwość obliczana

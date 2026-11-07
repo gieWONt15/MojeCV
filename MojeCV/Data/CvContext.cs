@@ -12,5 +12,6 @@ namespace MojeCV.Data
 
         // Tabela w bazie danych
         public DbSet<Doswiadczenie> Doswiadczenie { get; set; }
+        public DbSet<MojeCV.Models.Osoba> Osoba { get; set; } = default!;
     }
 }

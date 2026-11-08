@@ -29,7 +29,8 @@ public class CvController : Controller
             Wyksztalcenie = await _context.Wyksztalcenie
                 .OrderByDescending(w => w.RokOd).ToListAsync(),
             Umiejetnosci = await _context.Umiejetnosc
-                .OrderByDescending(u => u.Poziom).ToListAsync()
+                .OrderByDescending(u => u.Poziom).ToListAsync(),
+            Projekty = await _context.Projekt.OrderByDescending(p => p.Id).ToListAsync()
         };
         return View(model);
     }

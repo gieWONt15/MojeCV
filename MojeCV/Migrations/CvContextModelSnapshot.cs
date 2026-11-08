@@ -87,6 +87,29 @@ namespace MojeCV.Migrations
                     b.ToTable("Osoba");
                 });
 
+            modelBuilder.Entity("MojeCV.Models.Projekt", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Link")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Nazwa")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Opis")
+                        .HasMaxLength(1000)
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Projekt");
+                });
+
             modelBuilder.Entity("MojeCV.Models.Umiejetnosc", b =>
                 {
                     b.Property<int>("Id")

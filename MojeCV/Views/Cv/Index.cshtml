@@ -122,3 +122,35 @@
         <p>Brak dodanych umiejętności.</p>
     }
 </section>
+<section class="mb-4">
+    <h2>Projekty</h2>
+    <hr />
+    
+    @if (Model.Projekty != null && Model.Projekty.Any())
+    {
+        <ul class="list-unstyled">
+            @foreach (var p in Model.Projekty)
+            {
+                <li class="mb-3">
+                    <h5 class="mb-1">@p.Nazwa</h5>
+                    
+                    @if (!string.IsNullOrEmpty(p.Opis))
+                    {
+                        <p class="mb-1">@p.Opis</p>
+                    }
+                    
+                    @if (!string.IsNullOrEmpty(p.Link))
+                    {
+                        <a href="@p.Link" target="_blank" class="text-decoration-none btn btn-sm btn-outline-primary mt-1">
+                            Zobacz kod
+                        </a>
+                    }
+                </li>
+            }
+        </ul>
+    }
+    else
+    {
+        <p>Brak dodanych projektów.</p>
+    }
+</section>

@@ -15,5 +15,6 @@ namespace MojeCV.Data
         public DbSet<MojeCV.Models.Osoba> Osoba { get; set; } = default!;
         public DbSet<MojeCV.Models.Umiejetnosc> Umiejetnosc { get; set; } = default!;
         public DbSet<MojeCV.Models.Wyksztalcenie> Wyksztalcenie { get; set; } = default!;
+        public DbSet<MojeCV.Models.Projekt> Projekt { get; set; } = default!;
     }
 }

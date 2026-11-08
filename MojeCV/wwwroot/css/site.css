@@ -29,3 +29,31 @@ body {
 .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
   text-align: start;
 }
+
+/* Style stosowane TYLKO podczas drukowania (Ctrl+P / Cmd+P) */
+@media print {
+  /* Ukrywamy nawigację z góry, stopkę z dołu i wszystkie przyciski (np. "Zobacz kod") */
+  header, footer, .navbar, .btn {
+    display: none !important;
+  }
+
+  /* Zdejmujemy marginesy dla samego ciała strony */
+  body {
+    padding: 0;
+    margin: 0;
+    background-color: white;
+  }
+
+  /* Wymuszamy, by główny kontener zajął całą szerokość kartki A4 */
+  .container {
+    max-width: 100% !important;
+    width: 100% !important;
+    padding: 0 !important;
+  }
+
+  /* Sprawiamy, że linki na papierze nie są niebieskie, tylko czarne i czytelne */
+  a {
+    color: black !important;
+    text-decoration: none !important;
+  }
+}

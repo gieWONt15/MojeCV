@@ -1,0 +1,20 @@
+# Zbudowane pliki i foldery tymczasowe (.NET)
+bin/
+obj/
+
+# Pliki środowisk IDE (JetBrains Rider, Visual Studio, VS Code)
+.idea/
+.vs/
+*.user
+*.suo
+.vscode/
+
+# Baza danych SQLite (bardzo ważne: nie wysyłamy lokalnych danych do repozytorium!)
+*.db
+*.db-shm
+*.db-wal
+
+# Pliki systemowe macOS
+.DS_Store
+.AppleDouble
+.LSOverride
